@@ -1,0 +1,794 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="File-List" href="UsingAPIVwr_files/filelist.xml">
+<title>Using the New API Viewer</title>
+<style>
+<!--
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	margin-left:0in; margin-right:0in; margin-top:0in}
+-->
+</style>
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+</head>
+
+<body>
+
+<p class="MsoNormal"><b><span style="font-family: Arial"><font size="5">
+Using 
+the New API Viewer</font></span></b></p>
+<p class="MsoNormal"><font size="3">Copyright 2007 © David Ross Goben</font></p>
+<p><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_s1051" type="#_x0000_t75" alt="" style='width:503.25pt;
+ height:290.25pt;mso-position-horizontal-relative:text;
+ mso-position-vertical-relative:text'>
+ <v:imagedata src="UsingAPIVwr_files/image001.png" o:title="à"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=671 height=387
+src="UsingAPIVwr_files/image002.jpg" v:shapes="_x0000_s1051"><![endif]></p>
+<p class="MsoNormal"><b><span style="font-family: Arial"><font size="5">
+<a name="TOP"></a></font></span></b><font size="3" face="Arial"><a href="#INTRODUCTION">
+Introduction</a></font></p>
+<p class="MsoNormal"><font face="Arial" size="3"><a href="#INSTALLING">
+Installing the New API Viewer</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial"><a href="#NewFeatures">New 
+Features Beyond the Standard VB6 API Viewer</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">
+<a href="#UsingTheNewAPIViewer">Using the New API Viewer</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">
+<a href="#AddingExistingAPIItems">Adding/Deleting Existing API Items</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">
+<a href="#CheckingDependencies">Checking Dependencies</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">
+<a href="#ModifyingDeclarations">Modifying Declarations</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">
+<a href="#CreatingNewAPIEntries">Creating New API Entries</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">&nbsp;&nbsp;&nbsp;
+<a href="#CreatingNewConstants">Creating New Constants</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">&nbsp;&nbsp;&nbsp;
+<a href="#CreatingNewDeclarations">Creating New Declarations</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">&nbsp;&nbsp;&nbsp;
+<a href="#CreatingNewTypes">Creating New Types</a></font></p>
+<p class="MsoNormal"><font size="3" face="Arial">&nbsp;&nbsp;&nbsp;
+<a href="#CreatingNewEnums">Creating New Enums</a></font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><b><span style="font-family: Arial"><font size="3">
+<a name="INTRODUCTION"></a>INTRODUCTION</font></span></b></p>
+<p class="MsoNormal"><font size="3">The <b><i>New API Viewer</i></b> comes in 2 
+flavors: As a stand-alone executable, and as an Add-In to the Visual Basic 6 
+Integrated Development Environment (IDE), accessible from the <i>Add-Ins</i> 
+menu. The main difference between the two is that the Add-In version features 
+one additional button, <b><i>Insert into VB Code</i></b>, which allows the 
+selected API data to be inserted directly to the VB source code, if a code 
+window pane is currently open. Regardless, it will also place a copy of the selected 
+API data in the clipboard, as though the <b><i>Copy to Clipboard</i></b> button 
+had also been pressed.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><b><font size="3" face="Arial"><a name="INSTALLING"></a>
+INSTALLING THE NEW API VIEWER</font></b></p>
+<p class="MsoNormal"><font size="3">&nbsp;Please note that is most-all cases, 
+none of the following steps are ever necessary, especially if you are going to 
+compile the executables and then leave them alone in place.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">However, if you have been provided with the
+<i><b>APIViewer.Exe</b></i> and <i><b>APIViewer.DLL</b></i> files from someone who has compiled them under 
+VB6, or you simply want to also install them on another system without having to 
+recompile them on that system as well, or if you simply want to store away (or 
+delete) the source code and just used the compiled results, do the following:</font></p>
+<ol>
+  <li>
+<p class="MsoNormal"><font size="3">Create a new folder, or choose a folder that 
+you would place common executables and DLL files. Many people prefer the 
+System32 folder under the Windows folder, but this is a place where many other 
+file reside, and it is difficult to keep track of the files that you will 
+maintain. Though the choice is always yours. Regardless, choose a folder that 
+you will not later delete without considering that it is important. Place the 
+EXE and the DLL versions (plus this <b><i>UsingAPIVwr.htm</i></b> HELP file) of the New API Viewer into that location.</font></p>
+  </li>
+  <li>
+<p class="MsoNormal"><font size="3">Create a Desktop shortcut for the 
+<i><b>APIViewer.exe</b></i> file (right-click it, selected &quot;<i>Send To</i>&quot;, and 
+choose &quot;<i>Desktop (create shortcut)</i>&quot;. Next, rename and move the shortcut to wherever it will be 
+convenient for you, such as a personal desktop tools folder (lots of icons on 
+the desktop eats serious resources), the Quick Launch bar, or any 
+other convenient location. Before anyone gets their nose bent out of shape 
+because their method of doing this is better, such as creating the shortcut 
+right within the target location and naming it as you build it, let me explain 
+that I probably do the same as you, but I want this information to be as general 
+and as simple as possible for those who might be new to doing this.</font></p>
+  </li>
+  <li>
+<p class="MsoNormal"><font size="3">Register the <b><i>APIViwer.DLL</i></b> file. Although 
+this can sometimes be a difficult task for those with no experience in registering 
+COM (Component Object Model) files, there are three methods that make such tasks easy. 
+The first is to install the <i><b>RegUnreg.reg</b></i> file that came with the 
+New API Viewer 
+source code. This will add two important options to your context menu when you 
+right-click DLL and OCX files: entries titled Register and Unregister. These 
+allow you the convenience of registering and unregistering COM-based DLL's and OCX files with simple and quick button clicks. Just 
+double-click the <i><b>RegUnreg.reg</b></i> file and answer the YES and OK prompts. See the 
+<b><i>RegUnregHELP.Txt</i></b> file for additional details. The second method is to create a 
+shortcut to the system's <b><i>RegSvr32.exe</i></b> file (found in your system32 folder under 
+your windows directory) and place the shortcut into your SENDTO folder (to bring 
+the SENDTO folder up, go to Start / Run, and enter SENDTO to open a browser to this 
+location). Placing a shortcut to <i><b>Regsvr32.exe</b></i> in this folder will allow you to right-click a DLL or OCX file, select Send To, and then RegSvr32.exe to register 
+a file. The last method simply involves Start / Run, but you would browse to the 
+DLL or OCX file you desire, then insert the text (without quotes) &quot;RegSvr32.exe 
+&quot; to register, or &quot;RegSvr32.exe /u &quot; to unregister, in front of the selected 
+filename in the OPEN textbox (note the space after each of the insert commands). 
+Pressing OK will perform the task.</font></p>
+  </li>
+  <li>
+<p class="MsoNormal"><font size="3">Although this next step is normally not necessary 
+because the New API Viewer is configured to tell VB that it is in fact a VB6 
+component, and its registry entry (added by step 3 above) is in fact placed in a 
+common pool that VB will check when loading, the following is provided for informational purposes only, in case 
+something in the system happened that prevented VB6 from automatically 
+incorporating the New API Viewer into its Add-Ins menu. Bring up Visual Basic, and select the <i>
+Add-In Manager</i> from the <i><b>Add-Ins</b></i> menu (if you see &quot;<i>New API 
+Viewer</i>&quot; in the <i><b>Add-Ins</b></i> menu, then this is not necessary. Select the <b><i>New API 
+Viewer</i></b> entry, and ensure that the <i>Loaded/Unloaded</i> and the <i>Load 
+on Startup</i> checkboxes are checked in the <b><i>Load Behavior</i></b> frame. 
+Select OK. You can now activate the Add-In version of the <i>New API Viewer</i> 
+by selecting its entry from the <i><b>Add-Ins</b></i> menu. </font></p>
+  </li>
+</ol>
+<p><!--[if gte vml 1]><v:shape
+ id="_x0000_s1050" type="#_x0000_t75" alt="" style='width:362.25pt;height:282.75pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text'>
+ <v:imagedata src="UsingAPIVwr_files/image003.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=483 height=377
+src="UsingAPIVwr_files/image004.jpg" v:shapes="_x0000_s1050"><![endif]></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You are now ready to use the New API Viewer.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><b><span style="font-family: Arial"><font size="3">
+<a name="NewFeatures"></a>NEW 
+FEATURES BEYOND THE STANDARD VB6 API VIEWER</font></span></b></p>
+<p class="MsoNormal"><font size="3">This Add-In is a workable replacement for 
+both the stand-alone and Add-In API Viewer that comes with VB6, and is loaded with  features that most everyone 
+had wished the original versions had.&nbsp;</font></p>
+<ul>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It gives you the ability to declare 
+  dynamically constants as Long in the selected local copy of a constant. This 
+  allows the user to keep program speed optimal by not slowing down for variant 
+  conversions. Although constants can be of types other than Long, the VB6 API 
+  interface uses only Long Integer values for its constants.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It gives you the ability to create new 
+  constants right within the viewer. Assigned values are expected to be numeric, 
+  as is required by the VB6 API interface, but the values can be declared as 
+  hexadecimal, octal, or binary. You can also apply + or - offsets. Constants 
+  are created as all-capitals. No complex checks are performed on the value. It 
+  simply assumes that you know what you are doing, because such checks can 
+  involve complex offsets and naming of other constants. The viewer will also 
+  check to ensure that the newly entered constant does not already exist.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It gives you the ability to create new API 
+  Declarations right within the viewer and add them to your API list.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It gives you the ability to create new 
+  User-Defined Types right within the viewer and add them to your API list.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It gives you the ability to create new 
+  Enumerations right within the viewer and add them to your API list.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">You can Delete entries from the API list.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It gives you the ability to edit Declared 
+  Subroutine and Function parameter lists, and apply these changes to new 
+  subroutine or function names (for example, saving a&nbsp; modified version of 
+  SendMessage to SendMessageByNum, after changing the lParam as Any to ByVal 
+  lParam As Long). The built-in Declaration Editor makes such changes a breeze 
+  with just a few clicks of the mouse.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It automatic checks for new parameter and 
+  constant 
+  dependencies. If an added declaration or user-defined type or constant requires another 
+  user-defined type or constant not included in the selection list, you can view the 
+  requested types in a dialog and select them or reject them for inclusion in 
+  your selection list. This can make resolving declaration headaches such as 
+  with the complicated AccessCheck Function, which requires the additional 
+  inclusion of the GENERIC_MAPPING, PRIVILAGE_SET, and SECURITY_DESCRIPTOR 
+  types. These additional types in turn require the ACL and LUID_AND_ATTRIBUTES 
+  types. These newer types in turn also require the LUID type. The <b><i>New API 
+  Viewer</i></b> makes farming these additional types a breeze with a few quick 
+  clicks of the mouse.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">Additions created within the <b><i>New API 
+  Viewer</i></b> can be optionally saved for later re-used in the API data file. 
+  New entries are appended to the API file with a date- and time-stamp marker.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It immediate displays updates when you toggle 
+  between Private and Public declaration options, define parameters as arrays or 
+  fixed-length strings, change a return type, or change the referencing verb (ByRef/ByVal 
+  or None).</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">It includes a copy of and richly expanded 
+  freeware API32.TXT by Dan Appleman (president of Desaware, Inc.), which he had 
+  derived from the original Win32API.TXT file. On top of that, I have also 
+  included several thousand new Constants, Declarations, and Type declarations, 
+  to include some undocumented hooks and declarations that get around some 
+  entries that were thought impossible in VB. This new file should be copied to 
+  your Visual Studio Folder (Usually C:\Program Files\Visual Studio 6), in the 
+  Common\Tools\Winapi folder). Also, if you do development for Windows CE, 
+  another API file, WinCEAPI.TXT is also included (you can use the stand-alone 
+  version of the New API Viewer in place of the stand-alone API Viewer that is 
+  supplied with the Windows CE Development environment.</span></li>
+  <li>
+  <p class="MsoNormal" style="text-autospace: none">
+  <span style="font-size: 12.0pt">Two Versions of the <b><i>New API Viewer</i></b> 
+  are included. A stand-alone version that compiles to an EXE that can be 
+  launched outside of VB, and an Add-In version that compiles to an ActiveX DLL 
+  and runs from within VB via the Add-Ins menu. Notice that in the stand-alone 
+  version, the INSERT INTO VB CODE button is hidden, because it has no direct 
+  communication with the VB IDE).</span></li>
+</ul>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal">&nbsp;<b><span style="font-family: Arial"><font size="3"><a name="UsingTheNewAPIViewer"></a>USING 
+THE NEW API VIEWER</font></span></b><!--[if gte vml 1]><v:shape
+ id="_x0000_s1047" type="#_x0000_t75" alt="" style='width:5in;height:5in;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image005.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=480 height=480
+src="UsingAPIVwr_files/image006.jpg" align=left v:shapes="_x0000_s1047"><![endif]></p>
+<p class="MsoNormal"><font size="3">The operation of the New API Viewer, just like the standard API Viewer that 
+comes with Visual Basic, is very intuitive, and most people will need to only 
+breeze through these operating instructions, although some cool tricks are also 
+featured that might not be so obvious.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">When you first start up the New API Viewer, 
+it will need to access an API file. VB6 comes with 2 such files. Win32API.TXT is 
+the standard API file, and MAPI32.TXT, which includes information for use with 
+the Mail API. Note that the New API Viewer contains a new API file named 
+API32.txt, which is strongly recommended for use, as it contains numerous 
+corrections to errors in the original file, Win32API.TXT. However, I strongly 
+suggest you do the following: Because the browser opens up in your <i>Winapi</i> 
+folder, which contains Win32API.TXT and MAPI32.TXT, I suggest you first open 
+one, then the other (Simply use the File / Open menu options, or Ctrl-O). After 
+you have loaded each of these, the open the browser again, and go to the 
+location where you have placed the <i>APIViewer</i> Folder, which also contains the 
+API32.TXT file. Select the API32.TXT file, and use it as you primary API file, 
+unless you have another personal favorite that you have customized 
+(alternatively, you can instead first copy API32.TXT to your <i>Winapi</i> 
+folder, and access it from there).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">After opening all these files, you will 
+notice that they are listed under the <b><i>File</i></b> menu. From now on, you 
+can simply select them by clicking on their listing in them menu to load them.</font></p>
+<p class="MsoNormal"><br clear="all">
+&nbsp;</p>
+<p class="MsoNormal"><font size="3">Once you have done the above, you can easily 
+switch between API file by selecting the File menu, and choosing the desired API 
+file from the displayed list of files in the menu:</font></p>
+<p class="MsoNormal"><font size="3"><br>
+<!--[if gte vml 1]><v:shape
+ id="_x0000_s1026" type="#_x0000_t75" alt="" style='width:231.75pt;height:143.25pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text'>
+ <v:imagedata src="UsingAPIVwr_files/image007.png" o:title="&#730;°"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=309 height=191
+src="UsingAPIVwr_files/image008.jpg" v:shapes="_x0000_s1026"><![endif]><br clear="ALL">
+&nbsp;</font></p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><b><font face="Arial" size="3">
+<a name="AddingExistingAPIItems"></a>ADDING/DELETING EXISTING API ITEMS</font></b></p>
+<p class="MsoNormal">
+<img border="0" src="UsingAPIVwr_files/UsingA1.jpg" align="left" width="308" height="125"><font size="3">To 
+add an existing AP entry to you list of selections is easy. First, make sure 
+that you have the appropriate API type (category) selected, such as Constants, 
+Declares, Types, or Enumerators (initially, this category will be blank, until 
+you add enumerator lists to the master list).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">If the selected category is a long list, you 
+can begin typing the name of the desired item in the line below it, such as &quot;<i>sendm</i>&quot; 
+to locate the &quot;<i>SendMessage</i>&quot; declaration under the <i><b>Declares</b></i> 
+API Type. Next, to add it to the selection list, either double-click the item in 
+the list, or click the <i><b>Add</b></i> button.</font></p>
+<p class="MsoNormal"><br clear="all">
+&nbsp;</p>
+<p class="MsoNormal"><font size="3">By default, items are displayed in Full Text 
+in the Selection List (the &quot;<i>View Full Text of Selections</i>&quot; option in the
+<i><b>View</b></i> menu is checked). For example, the &quot;<i>SendMessage</i>&quot; declaration 
+would be displayed as:</font></p>
+<p><!--[if gte vml 1]><v:shape
+ id="_x0000_s1048" type="#_x0000_t75" alt="" style='width:5in;height:5in;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image009.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=480 height=480
+src="UsingAPIVwr_files/image010.jpg" align=left v:shapes="_x0000_s1048"><![endif]></p>
+<p></p>
+<p class="MsoNormal"><font size="3">If you wish to view only the item name, 
+select the &quot;<i>View Selections as Line Items</i>&quot; option in the <i><b>View</b></i> 
+menu.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">By default, new entries are added at the end 
+of the list (except for unresoved dependencies, which will be discussed later). 
+TO insert a new entry before another entry already in the list, simply click in 
+the Selected Items list on the entry that you want to insert the new entry in 
+front of (clicking on the blank line between entries also works).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">If for some reason you choose to delete an 
+entry from the list, you select it and then hit the red &quot;<i>X</i>&quot; button next 
+to the &quot;<i>Add</i>&quot; button. You will be prompted for verification, and you will 
+be told that the 'deletion' will simply be a tag appended to the end of the API 
+file. Technically, this tag consists of the word &quot;Delete&quot; and followed by the 
+full definition of the item to delete. When the API file is loaded the next 
+time, when this delete tag is encountered, the previously-added entry will be 
+found and removed from the list of available options. Later, if you choose to 
+re-enable the entry, simply edit the API text file and remove the delete tag (it 
+will be lead by a line with a date and time stamp). <i><b>NOTE</b>: be aware that the 
+viewer will prompt you for saving any changes before switching API files, if you 
+choose to do that. For example, if you made any changes to the API32.TXT list, 
+and then chose to open the &quot;MAPI32.TXT&quot; list.</i></font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">To change the Declaration Scope of the 
+selected item or items, click the Public or Private radio buttons. The list of 
+selected items will immediately update.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">By default, Constants are declared without 
+any specific typing, which means they will default it Variant. Although 
+constants can in fact be declared of any type, such as String or Integer, The 
+New API Viewer enables a checkbox below the Declare Scope box to add an &quot;As 
+Long&quot; qualifier to constant selections. This is the type used by most-all API 
+declare invocations, which is where the constants in the API file are of course 
+most-often required.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Erasing the entire contents of the the 
+selected items list is accomplished by clicking the &quot;<i>Clear All Selections</i>&quot; 
+button.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">If you click the mouse on the text of an 
+item in the Selected Items list, the <b><i>Remove Entry</i></b> button will be 
+enabled. You can remove individual entries in the list using this button.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">If you have a code pane opened in your VB 
+project, you can insert the selection to the current insert point in the code 
+(you can switch back to VB, position the insert point (cursor position) to the 
+place you want to add the code, and then switch back to the New API Viewer) by 
+clicking the &quot;<i>Insert into VB Code</i>&quot; button. Notice that this also copies 
+the selection to the clipboard, just in case you do not have a code pane opened, 
+in which case you could lose your selection. By also placing it in the 
+clipboard, you can later paste it into your code once you have a code pane 
+opened. Note: In the stand-alone version, this button is not displayed, because 
+the VB IDE interface is not directly accessible.<br clear="all">
+&nbsp;</font></p>
+<p class="MsoNormal"><font size="3">If you wish to simply code the selection to 
+the clipboard, click the &quot;Copy to Clipboard&quot; button (this is the only option 
+available in the stand-alone version for transferring selections).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><b><font face="Arial" size="3">
+<a name="CheckingDependencies"></a>CHECKING DEPENDENCIES</font></b></p>
+<p class="MsoNormal"><font size="3">When you add new constants or declarations type 
+selections to your list, the New API Viewer automatically checks to see if the 
+values or parameters declared in them are of constants or types that are included in your selection 
+list. Standard variable types are accepted without question, but parameters 
+declared as a user-defined type or constants are reviewed.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">If it is found that a type is not included 
+in the selection, a tone will sound and a red circle will flash beside a 
+now-enabled &quot;<i>Check Dependencies...</i>&quot; button (it will only be enabled when 
+unresolved dependencies are found). This does not necessarily constitute an 
+error, because the sought types may already be declared within your VB code. In 
+this case, you can turn off the otherwise annoying flashing red ball by simply 
+clicking on it.</font></p>
+<p><!--[if gte vml 1]><v:shape
+ id="_x0000_s1031" type="#_x0000_t75" alt="" style='width:356.25pt;height:112.5pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image011.png" o:title="°"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=475 height=150
+src="UsingAPIVwr_files/image012.jpg" align=left v:shapes="_x0000_s1031"><![endif]></p>
+<p class="MsoNormal"><font size="3">For example, suppose you selected the &quot;<i>Access 
+Check</i>&quot; declaration (it is located almost at the very top of the <i><b>
+Declares</b></i> list).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">If you select the &quot;Check Dependencies...&quot; 
+button, you will see the following dialog box:</font></p>
+<p class="MsoNormal"><br clear="all">
+&nbsp;</p>
+<p><!--[if gte vml 1]><v:shape
+ id="_x0000_s1032" type="#_x0000_t75" alt="" style='width:6in;height:261pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image013.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=576 height=348
+src="UsingAPIVwr_files/image014.jpg" align=left v:shapes="_x0000_s1032"><![endif]></p>
+<p class="MsoNormal"><font size="3">In the left column will be listed any 
+directly declared types and constants that are not found in the Selected Items list. By 
+selecting individual items in the left column, you can preview the type 
+or constant definition for that item.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You can check only the items that you want 
+to add to the list, or, to choose them all, simply click the &quot;<i>Select All</i>&quot; 
+button.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Once you are satisfied, click the &quot;<i>Apply</i>&quot; 
+button.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">The New API Viewer will add any selected 
+types and constants to the top of the Selected Items list, and then recheck for unresolved 
+dependencies. In this particular case, the added PRIVILAGE_SET and 
+SECURITY_DESCRIPTOR types will in turn declare additional dependencies, and so 
+another tone will sound and the red ball will again flash. If you select the &quot;<i>Check 
+Dependencies...</i>&quot; button again, this time you will find that two other new 
+dependencies, ACL and LUID_AND_ATTRIBUTES are listed. Select both of them and 
+click the &quot;<i>Apply</i>&quot; button. This will add these two new dependencies to the 
+top of the Selected Items list. But the viewer will again check for unresolved 
+dependencies and find them. In this case, the LUID_AND_ATTRIBUTES had introduced 
+still another new dependency. Clicking the &quot;<i>Check Dependencies...</i>&quot; button 
+once again will reveal that LUID is unresolved. Selecting it and then the &quot;<i>Apply</i>&quot; 
+button will close out any unfound dependencies.</font></p>
+<p class="MsoNormal"><br clear="all">
+<br>
+&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><b><font size="3" face="Arial">
+<a name="ModifyingDeclarations"></a>MODIFYING DECLARATIONS</font></b><!--[if gte vml 1]><v:shape
+ id="_x0000_s1034" type="#_x0000_t75" alt="" style='width:327.75pt;height:44.25pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image015.png" o:title="&#636;°"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=437 height=59
+src="UsingAPIVwr_files/image016.jpg" align=left v:shapes="_x0000_s1034"><![endif]></p>
+<p class="MsoNormal"><font size="3">Whenever you select a Declaration that 
+contains an &quot;As Any&quot; parameter definition, a note will be displayed in the 
+status bar of the viewer that the declaration contain at least one as any 
+definition.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">This is not an error, because the &quot;As Any&quot; 
+clause was added to VB to allow multiple parameters types to be submitted to a 
+single API declaration, rather than requiring numerous overloaded definitions to 
+be placed in the API file. For example, many API declarations expect a pointer 
+to an item, which, depending upon another parameter, the pointed item could be a 
+Long or even a text String.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Because VB6 and previous do not support 
+overloading, the addition of &quot;As Any&quot; was a good generic choice. However, many 
+people prefer to avoid the pitfalls that this feature can also introduce. For 
+those who wish to avoid the use of &quot;As Any&quot;, the &quot;<i>Modify Declaration...</i>&quot; 
+button is provided.</font></p>
+<p><!--[if gte vml 1]><v:shape
+ id="_x0000_s1035" type="#_x0000_t75" alt="" style='width:6in;height:282pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image017.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=576 height=376
+src="UsingAPIVwr_files/image018.jpg" align=left v:shapes="_x0000_s1035"><![endif]></p>
+<p class="MsoNormal"><font size="3">If you click the mouse on a declaration 
+within the Selected Items list, the &quot;<i>Modify Declaration...</i>&quot; button is 
+enabled. Clicking it will bring up the <i>Modify Declaration</i> dialog.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Let's try it.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Suppose we wanted to send a message to a 
+window as a text string. In this case, we would want to change the lParam 
+declaration to String (and also reference it ByVal, because passing a string By 
+Value will pass a pointer to the start of the text).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">With the &quot;Declares&quot; option selected in the 
+API Type list, find the &quot;SendMessage&quot; item and Add it to the Selected Items 
+(Typing &quot;sendm&quot; in the search text box will quickly point to it).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Click within the body of the <i>SendMessage</i> 
+declaration within the Selected Items list, and then click the &quot;<i>Modify 
+Declaration...</i>&quot; button.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You will be told that you will not be able 
+to save any changes until the name for the declaration is changed (you would 
+clearly want to avoid redefining an existing API entry).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">We will change the name to &quot;<i>SendMessageByStr</i>&quot;. 
+Do this by simply selecting the text for the New Name for Declaration and 
+appending &quot;<i>ByStr</i>&quot; to the end of the text. Notice that the &quot;<i>Apply</i>&quot; button 
+is now enabled, but we are not done yet.</font></p>
+<p class="MsoNormal"><br clear="all">
+&nbsp;</p>
+<p class="MsoNormal"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1038" type="#_x0000_t75" alt="" style='width:420pt;height:81.75pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image019.png" o:title="°"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=560 height=109
+src="UsingAPIVwr_files/image020.jpg" align=left v:shapes="_x0000_s1038"><![endif]><font size="3">Select 
+the &quot;<b><i>lparam As Any</i></b>&quot; item in the parameter list. On the right, 
+change the Referencing Verb to &quot;<i>ByVal</i>&quot; by making a selection from the 
+dropdown list. In addition, change the type to String by selecting <i><b>String</b></i> 
+from the New Standard Type dropdown list (you could also select from a Type List 
+Item to choose a user-defined type, if the API would accept it, and that is what 
+you would want to pass it).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Notice that as you make your selections, the 
+changes will be immediately reflected in the selected parameter on the left. 
+Notice further that although there are two different type lists to choose from, 
+the type assigned to the selected parameter is defined from the last type list 
+selected from.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You will also notice that messages will be 
+displayed providing assistance, such as declaring a reference as &quot;(none)&quot; will 
+actually pass the item ByRef, or that &quot;Any&quot; type parameters should not have a 
+ByRef or ByVal declaration (technically, this is not actually an actual issue, 
+but it might simply add to any confusion).</font></p>
+<p><!--[if gte vml 1]><v:shape
+ id="_x0000_s1039" type="#_x0000_t75" alt="" style='width:339.75pt;height:90pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image021.png" o:title="&#636;°"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=453 height=120
+src="UsingAPIVwr_files/image022.jpg" align=left v:shapes="_x0000_s1039"><![endif]></p>
+<p class="MsoNormal"><font size="3">Once you are satisfied, click the &quot;<i>Apply</i>&quot; 
+button. Notice that a new entry is selected in the Available Items list, and 
+that the added API, &quot;<i>SendMessage</i>&quot;, in the Selected Items list has been 
+replaced by the new&nbsp; &quot;<i>SendMessageByStr</i>&quot; API declaration.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You may also notice that the &quot;<i>Save 
+changes to current API file</i>&quot; option under the <i><b>File</b></i> menu has 
+now been enabled. You can save these changed now, or you will be prompted to 
+save them when you exit the viewer, or you can simply choose not to save them, 
+because you simply want to add the current definition to your code, and you have 
+no future plans to use it.</font></p>
+<p class="MsoNormal"><br clear="all">
+&nbsp;</p>
+<p class="MsoNormal"><font size="3">If you choose at whatever point to save the 
+changes/addition, two things will happen. First, if a backup copy of the current 
+API file does not yet exist, then one will first be created. Second, any new 
+declarations are appended to the master file, with a note defining the current 
+date and time stamp. For example, this is the text found at the bottom of my 
+API32.TXT file after I added the &quot;SendMessageByStr&quot; declaration:</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><b><font face="Courier New">'<br>
+'New entries added: 4/11/2007 10:00:14 AM<br>
+Declare Function SendMessageByStr Lib &quot;user32&quot; Alias &quot;SendMessageA&quot; (ByVal hwnd 
+As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As String) As 
+Long<br>
+&nbsp;</font></b></p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><b><font size="3" face="Arial">
+<a name="CreatingNewAPIEntries"></a>CREATING NEW API ENTRIES</font></b></p>
+<p class="MsoNormal"><font size="3">When you have the appropriate API Type 
+selected, you can click the &quot;<i>Create New Entry...</i>&quot; button to add a new 
+definition to the API file. A dialog appropriate for the selected API Type will 
+be displayed.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3" face="Arial"><a name="CreatingNewConstants">
+</a>Creating New Constants</font><!--[if gte vml 1]><v:shape
+ id="_x0000_s1041" type="#_x0000_t75" alt="" style='width:413.25pt;height:137.25pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image023.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=551 height=183
+src="UsingAPIVwr_files/image024.jpg" align=left v:shapes="_x0000_s1041"><![endif]></p>
+<p class="MsoNormal"><font size="3">Creating new constants is very easy. Type in 
+the name of the constant you want to declare, and then type in the value that 
+you want to assign to it. Notice that you can enter values as decimal, 
+hexadecimal (prepend &quot;&amp;H&quot; to the value), or octal (prepend &quot;&amp;O&quot; to the value).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You can also include other defined constants 
+and apply offsets (+ or -) to them, and you can apply binary operators, such as 
+AND, OR, XOR, and NOT. Notice that if any offsets or binary operators are applied, that 
+embracing parentheses will be automatically supplied if they were not already 
+entered.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Selecting the &quot;<i>Apply</i>&quot; button will add 
+and select the new constant to the Available List.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Note that if the desired new constant name 
+actually clashes with an existing constant name, that the &quot;<i>Apply</i>&quot; button 
+will not be enabled.<br clear="all">
+&nbsp;</font></p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><font size="3" face="Arial">
+<a name="CreatingNewDeclarations"></a>Create New Declarations</font><!--[if gte vml 1]><v:shape
+ id="_x0000_s1049" type="#_x0000_t75" alt="" style='width:6in;height:335.25pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image025.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=576 height=447
+src="UsingAPIVwr_files/image026.jpg" align=left v:shapes="_x0000_s1049"><![endif]></p>
+<p class="MsoNormal"><font size="3">When you create a new declaration, the new 
+declare name must be unique, not clashing with any name currently defined in the 
+Declares list.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">The Library entry is the DLL that the entry 
+will be invoked from (in this case, we are using User32.DLL), less the &quot;.DLL&quot; 
+file extension. This will be displayed as the &quot;LIB&quot; entry on the declaration (in 
+this example, it will be defined as <i><b>Declare SendMessageByStr LIB &quot;user32&quot;</b></i>).</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">The Alias name is optional if the new 
+Declare Name matches the API library entry in the DLL exactly. However, in our 
+example, the actual library entry our modified invocation will call is actually 
+defined as &quot;<i>SendMessageA</i>&quot;. Therefore, in this case it is a <i>required</i> 
+entry.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">If the invocation will return a value, then 
+it is a function, and we can specify a return type. Notice that you can choose 
+from two different type lists. The standard list contains the common types, such 
+as (none), Byte, Double, Integer, Long, Single, String, and Variant. The other 
+list contains those typed defined within the API file. Notice that the Selection 
+will be defined from the last list selected from. By default, if &quot;Function&quot; is 
+selected and no return type has yet been chosen, the &quot;Long&quot; is selected from the 
+standard list. You can change this as you see fit, to include selecting from the 
+Type List items.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">The next thing you must do is add 
+parameters. In this example, I have added 4 parameters. The way I added them was 
+very fast. I typed in &quot;hWnd&quot; as the new parameter, hit TAB, selected &quot;ByVal&quot; 
+from the Reference Verb list by hitting the DOWN ARROW Twice, and because the 
+standard type was already set to long, I simply hit the ENTER key (the ENTER key 
+forces the &quot;<i>Add Parameter</i>&quot; button). The entry &quot;Byval hWnd As Long&quot; was 
+added to the parameter list, and the New Parameter field was cleared and ready 
+for the next parameter. Because wMSG and wParam are declared just like hWnd, I 
+simply typed 'wMsg&quot;, hit ENTER, typed &quot;wParam&quot;, and hit ENTER again. Because 
+lParam is a string, I type &quot;lParam&quot;, hit TAB twice, hit the DOWN ARROW twice to 
+select &quot;String&quot;, and then hit ENTER.</font></p>
+<p class="MsoNormal"><br clear="all">
+<font size="3">Notice that when the New Parameter field is 
+empty, that if you select a parameter in the Parameter List, you can edit its 
+definition by selecting the desired entries on the right.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Normally you will not have to worry about 
+array or fixed-length string definitions. But if you do, the options are 
+available. By checking the &quot;<i>Define as an Array</i>&quot; checkbox, the parameter 
+name will have an &quot;()&quot; appended to it. If you also have a Ubound size entered 
+and the Ubound checkbox checked, the value will be added between the 
+parentheses. If you want to define a fixed-length string, enter a value and 
+check the &quot;<i>Ubound/Size</i>&quot; checkbox, but leave the &quot;<i>Define as an Array</i>&quot; 
+checkbox unchecked. For example, if the size field contained the value 260, and 
+a string parameter is selected, its definition would be appended with &quot;<i>* 260</i>&quot;.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You can also reorder the parameters in the 
+list, to change their order, in case you entered them in the wrong order.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You can also delete parameter list entries, 
+in case you realized that this API function does not use a certain parameter, or 
+if you want to change the name of a parameter.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><font size="3" face="Arial"><a name="CreatingNewTypes"></a>Create New Types</font><!--[if gte vml 1]><v:shape
+ id="_x0000_s1043" type="#_x0000_t75" alt="" style='width:431.25pt;height:222.75pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image027.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=575 height=297
+src="UsingAPIVwr_files/image028.jpg" align=left v:shapes="_x0000_s1043"><![endif]></p>
+<p class="MsoNormal"><font size="3">Adding new User-Defined Types is easy.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Enter the name for the new Type you wish to 
+define. If it clashes with an existing Type, then the &quot;Apply&quot; button will not be 
+enabled.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Next, enter each new Type Item, select each 
+modification to the new item as required, and hit the &quot;<i>Add New Type Item</i>&quot; 
+button. You can also simply enter each new entry and press the ENTER key, and 
+then afterward select each new item and modify them as required.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">By selecting an item in the Type Item list 
+on the left, you can modify its definition with the options on the right.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">By checking the &quot;<i>Define as an Array</i>&quot; 
+checkbox, the Type Item&nbsp; name will have an &quot;()&quot; appended to it. If you also 
+have a Ubound size entered and the Ubound checkbox checked, the value will be 
+added between the parentheses. If you want to define a fixed-length string, 
+enter a value and check the &quot;<i>Ubound/Size</i>&quot; checkbox, but leave the &quot;<i>Define 
+as an Array</i>&quot; checkbox unchecked. For example, if the size field contained 
+the value 260, and a string parameter is selected, its definition would be 
+appended with &quot;<i>* 260</i>&quot;.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You can also reorder the Type Items in the 
+list, to change their order, in case you entered them in the wrong order.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You can also delete Type Item list entries, 
+in case you realized that this API function does not use a certain Type Item, or 
+if you want to change the name of a Type Item.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none"><b>
+<font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><font size="3" face="Arial"><a name="CreatingNewEnums"></a>Creating New Enums</font><!--[if gte vml 1]><v:shape
+ id="_x0000_s1045" type="#_x0000_t75" alt="" style='width:411pt;height:200.25pt;
+ mso-position-horizontal-relative:text;mso-position-vertical-relative:text;float:left'>
+ <v:imagedata src="UsingAPIVwr_files/image029.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=548 height=267
+src="UsingAPIVwr_files/image030.jpg" align=left v:shapes="_x0000_s1045"><![endif]></p>
+<p class="MsoNormal"><font size="3">Creating new enumeration lists is easy.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Enter the name for the new Enum you wish to 
+define. If it clashes with an existing Enum (the list defined in the API file is 
+intially empty), then the &quot;Apply&quot; button will not be enabled.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Next, enter each new Enumeration Member and 
+press the ENTER key or click the &quot;<i>Add Enumerator</i>&quot; button.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">The first entry is assigned a value of 0, 
+then second is given a value of 1, the third a value of 2, and so on.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">You can move members up or down in the list 
+by choosing either the &quot;<i>Move Up in List</i>&quot; or &quot;<i>Move Down in List</i>&quot; 
+buttons when a member his selected.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">Delete any mis-typed members with the &quot;<i>Delete</i>&quot; 
+button, or simply hitting the &quot;Del/Delete&quot; keyboard key.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">If you click on an enumeration member, you 
+can edit it, add/modify an initializing value (Which can be decimal, 
+hexadecimal, or octal), or add/edit a comment.</font></p>
+<p class="MsoNormal"><br clear="all">
+<b><font size="3" face="Arial"><a href="#TOP">Back to Top</a></font></b></p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-autospace: none">&nbsp;</p>
+<p class="MsoNormal"><i><b><font size="3">END OF HELP DOCUMENT</font></b></i></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font size="3">&nbsp;</font></p>
+
+</body>
+
+</html>

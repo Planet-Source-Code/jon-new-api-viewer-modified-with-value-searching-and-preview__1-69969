@@ -1,0 +1,31 @@
+New API Viewer Release History
+--------------------------------------------------------------
+April 14, 2007 -- Initial release. Version 1.0.0
+April 15, 2007 -- 1.0.1.
+		        * Added WinCEAPI.TXT supporting Windows CE
+                    API declarations (the stand-alone version
+                    can act as a working replacement for the
+                    API Viewer that comes with the CE
+                    development environment.
+                  * Added dependency checking for Constants,
+                    where a constant can reference other
+                    constants.
+                  * Fixed bug in cmdAdd that did not recognize
+                    subroutine declarations. D'OH!
+April 16, 2007 -- 1.0.2.
+                  * Smoothed resizing of main form.
+                  * Added over 47,000 new Constants. Added new
+                    MAPI constants to API32.TXT. All other new
+                    constants supplied in new files
+                    API32Const1.txt and API32Const2.txt.
+                  * Made sure frmAddConst.frm is unloaded when
+                    a new file with new constants is loaded,
+                    otherwise, this form still holds the
+                    initial constants from the first-loaded file.
+May 22, 2007 -- 1.0.3.
+	             * Fixed a bug that prevented constants from
+                    being looked up interactively using the
+                    lookup textbox.
+                  * Removed the need for an external Manifest
+                    file by embedding it and invoking it from
+                    within its new embedded Resource file.
