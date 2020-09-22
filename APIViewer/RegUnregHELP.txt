@@ -1,0 +1,38 @@
+REGUNREG.REG INFORMATION
+------------------------
+The RegUnreg.reg is a file in standard registry export file format that contains modifications to the file-type referencing database (called Classes). It will safely modify your registry so that after double-clicking it and installing it, you can right-click COM-based DLL and OCX files (Component Object Model) from within Windows Explorer and then choose the Register or Unregister option from the context drop-down menu.
+
+Specifically, the file contains only the following text-based information:
+
+REGEDIT4
+[HKEY_CLASSES_ROOT\.dll]
+@="dllfile"
+[HKEY_CLASSES_ROOT\dllfile\shell\Register\command]
+@="RegSvr32.exe \"%1\""
+[HKEY_CLASSES_ROOT\dllfile\shell\Unregister\command]
+@="RegSvr32.exe /u \"%1\""
+[HKEY_CLASSES_ROOT\.ocx]
+@="ocxfile"
+[HKEY_CLASSES_ROOT\ocxfile]
+@="OCX"
+[HKEY_CLASSES_ROOT\ocxfile\shell\Register\command]
+@="RegSvr32.exe \"%1\""
+[HKEY_CLASSES_ROOT\ocxfile\shell\Unregister\command]
+@="RegSvr32.exe /u \"%1\""
+
+This registry modification file WILL NOT damage your registry. What it does is adds registry entries for the system's RegSvr32.exe file to easily access components. This registry modification file specifically adds drop-down menu options from the context menu in Explorer so that if you right-click a DLL or an OCX file, two entries will be added to the dropdown menu: Register and Unregister. If you are curious about exactly what it does, simply right-click the RegUnreg.reg file and select edit to open it in a text editor (usually Notepad). The modification originally came from the Microsoft Developer Network Website several years ago.
+
+For instance, the above information is stored in RegEdit version 4 format, which is compatible with Windows95, NT3.5.1 and all later operating systems. It first ensures that a reference to ".dll" files is made and in turn links to a reference entry named "dllfile". In the "dllfile" entry, it creates a "shell" entry that is used for file I/O in the Explorer interface, submitting a "Register" option to the shell whose command instruction invokes RegSvr32.exe and submits the currently selected DLL file in Explorer. A sister command for an additional "Unregister" entry does the same, but includes the '/u' Unregister command line option. The reg file then does the same thing for '.ocx' files.
+
+
+BY THE WAY...
+------------------------
+Please note that if you try to register any non-COM DLLs, it will, as would be expected, report an error. This is an error generated from RegSvr32.exe, and it is reporting nothing disastrous, but it is simply explaining that the DLL does not contain the necessary COM hooks to register the file. This is OK. Non-COM-based DLL's do not need to be registered, because they are designed to be specifically referenced as a file, whereas COM-based DLL's are referenced via registry entries, where the invoking code submits a unique ID to the system, which in turn checks the registry and locates where the desired  DLL is stored. Enough tech talk.
+
+Also, do not worry about reregistering a component that you might not be sure if it is already registered or not. The new registration will simply replace the previous one, if it exists.
+
+
+IN CLOSING
+------------------------
+As an interesting side-note, COM-based files were heralded as a saving grace when they first appeared on the scene, but are now often decried as evil by many, mostly new self-righteous techies, because if you do not perform proper maintenence in your versioning in complex objects, an older version can easily over-write the registery information for the object, and suddenly a program that expects features suppied in the newer object, but are not yet featured in the older object, create operating problems. Do a Google search on "DLL HELL" for more information. But be it as it may, the New API Viewer follows a simple design paradigm, that of being a complete utilitarian application, which will not force any such hell upon anyone.
+
